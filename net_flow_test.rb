@@ -4,6 +4,7 @@ require 'yaml'
 require 'sshkit'     
 require 'sshkit/dsl'
 require 'ruby-progressbar'
+require 'colorize'
 include SSHKit::DSL
 SSHKit.config.output_verbosity=Logger::INFO
 
@@ -55,11 +56,11 @@ config.each do |src|
         progressbar.increment
 
         if output.match(success_regex)
-          printer.push "#{src['src']} => #{dst['ip']}:#{port} is OK with socket up"
+          printer.push "#{src['src']} => #{dst['ip']}:#{port} is OK with socket up".colorize(:green)
         elsif output.match(connection_refused_regex)
-          printer.push "#{src['src']} => #{dst['ip']}:#{port} is OK with socket closed"
+          printer.push "#{src['src']} => #{dst['ip']}:#{port} is OK with socket closed".colorize(:yellow)
         elsif output.match(timeout_regex)
-          printer.push "#{src['src']} => #{dst['ip']}:#{port} is KO"
+          printer.push "#{src['src']} => #{dst['ip']}:#{port} is KO".colorize(:red)
         else
           printer.push "#{src['src']} => #{dst['ip']}:#{port} UNEXPECTED OUTCOME"
         end
