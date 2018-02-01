@@ -37,13 +37,14 @@ end
 progressbar = ProgressBar.create(:format         => "%a %b\u{15E7}%i %p%% %t",
                                  :progress_mark  => ' ',                        
                                  :remainder_mark => "\u{FF65}",                 
-                                 :total          => 10)                         
+                                 :total          => flows)
 
 
 printer = []
 config.each do |src|
   SSHKit::Backend::Netssh.configure do |ssh|
     ssh.ssh_options = {
+      auth_methods: %w(password),
       user: src['username'],
       password: src['password']
     }

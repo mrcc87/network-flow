@@ -1,18 +1,9 @@
 ---
-- src: 10.17.16.45
-  username: connect
-  password: connect
+- src: 192.168.1.1
+  username: user
+  password: password
   dst:
-    - ip: 10.13.129.13
+    - ip: 192.168.100.1
       ports: [123, 18180]
-    - ip: 10.17.16.45
-      ports: [8380, 8480, 18180]
-
-- src: 10.13.129.13
-  username: connect
-  password: connect
-  dst:
-    - ip: 10.13.129.13
-      ports: [123, 18180]
-    - ip: 10.17.16.45
+    - ip: 192.168.101.1
       ports: [8380, 8480, 18180]
