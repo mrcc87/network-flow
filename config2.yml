@@ -1,0 +1,15 @@
+---
+- src: 10.13.129.13
+  username: connect
+  password: connec
+  dst:
+    - ip: 10.13.129.13
+      ports: [123, 18180, 111]
+
+- src: 10.13.129.13
+  username: connect
+  password: connect
+  dst:
+    - ip: 10.13.129.13
+      ports: [123, 18180]
+
